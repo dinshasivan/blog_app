@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "bootstrap/dist/css/bootstrap.min.css"
+import BootstrapClient from "@/pages/bootsrapClient";
 
 
 const geistSans = Geist({
@@ -23,7 +24,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
-        {/* <BootstrapClient/> */}
+        <BootstrapClient/>
       </body>
     </html>
   );

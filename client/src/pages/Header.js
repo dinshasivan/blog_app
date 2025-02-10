@@ -12,7 +12,6 @@ const NavBar = () => {
   useEffect(() => {
     // Fetch user data from local storage or API
     const loggedInUser = localStorage.getItem("user");
-    
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser)); // Parse stored user data
     }
@@ -29,71 +28,74 @@ const NavBar = () => {
   };
 
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <Link href="/" className="navbar-brand mx-auto d-lg-none headerStyle">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+      <div className="container">
+        {/* Brand (Mobile) */}
+        <Link href="/" className="navbar-brand d-lg-none fw-bold headerStyle">
+          Tasty Tales
+        </Link>
+
+        {/* Toggle Button (Mobile View) */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarNav">
+          {/* Left-Side Links */}
+          <ul className="navbar-nav me-auto text-uppercase fw-bold">
+            <li className="nav-item">
+              <Link href="/blogs" className="nav-link text-dark">Blogs</Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/about" className="nav-link text-dark">About</Link>
+            </li>
+            <li className="nav-item">
+              <Link href="/contact" className="nav-link text-dark">Contact</Link>
+            </li>
+          </ul>
+
+          {/* Brand (Desktop) */}
+          <Link href="/" className="navbar-brand d-none d-lg-block fw-semi-bol headerStyle fs-3">
             Tasty Tales
           </Link>
 
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav ms-auto navFont">
-              <li className="nav-item">
-                <Link href="/blogs" className="nav-link margin-y">Blogs</Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/about" className="nav-link">About</Link>
-              </li>
-              <li className="nav-item">
-                <Link href="/contact" className="nav-link">Contact</Link>
-              </li>
-            </ul>
-
-            <Link href="/" className="navbar-brand mx-auto d-none d-lg-block headerStyle">
-              Tasty Tales
-            </Link>
-
-            <ul className="navbar-nav ms-auto">
-              {user ? (
-                <>
-                  <li className="nav-item">
-                    <span className="nav-link navFont fw-bold" style={{ cursor: "pointer" }} onClick={handleUserRedirect}>
-                      <PersonCircle size={24} className="me-2" />
-                    </span>
-                  </li>
-                  <li className="nav-item">
-                    <button className="nav-link navFont btn btn-danger" onClick={handleLogout}>
-                      Logout
-                    </button>
-                  </li>
-                </>
-              ) : (
-                <>
-                  <li className="nav-item">
-                    <Link href="/register" className="nav-link navFont">Register</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link href="/login" className="nav-link navFont">Login</Link>
-                  </li>
-                </>
-              )}
-            </ul>
-          </div>
+          {/* Right-Side User Auth Links */}
+          <ul className="navbar-nav ms-auto">
+            {user ? (
+              <>
+                <li className="nav-item">
+                  <span className="nav-link fw-bold" style={{ cursor: "pointer" }} onClick={handleUserRedirect}>
+                    <PersonCircle size={24} className="text-primary me-2" />
+                  </span>
+                </li>
+                <li className="nav-item">
+                  <button className="btn btn-danger text-white px-3" onClick={handleLogout}>
+                    Logout
+                  </button>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="nav-item">
+                  <Link href="/register" className="nav-link btn btn-outline-primary mx-1">Register</Link>
+                </li>
+                <li className="nav-item">
+                  <Link href="/login" className="nav-link btn btn-primary mx-1">Login</Link>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   );
 };
 

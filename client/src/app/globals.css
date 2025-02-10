@@ -1,3 +1,8 @@
+@font-face {
+  font-family: mainFont;
+  src: url(../../public/font/Lobster-Regular.ttf);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -39,4 +44,8 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.headerStyle{
+  font-family: mainFont;
 }

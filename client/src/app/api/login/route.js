@@ -17,7 +17,7 @@ export async function POST(req) {
         }
 
         db = await createConnection(); // Open DB Connection
-        console.log('✅ Database connection established');
+        console.log(' Database connection established');
 
         // Fetch user details
         const [rows] = await db.execute('SELECT * FROM user WHERE username = ?', [username]);
@@ -40,7 +40,7 @@ export async function POST(req) {
         //     });
         // }
 
-        console.log('✅ User authenticated:', user.username);
+        console.log(' User authenticated:', user.username);
 
         // Generate JWT token
         const token = jwt.sign({ id: user.id, username: user.username }, SECRET_KEY, { expiresIn: '2h' });
@@ -56,7 +56,7 @@ export async function POST(req) {
         });
 
     } catch (error) {
-        console.error("❌ Error in /api/login:", error);
+        console.error(" Error in /api/login:", error);
         return new Response(JSON.stringify({ error: 'Internal Server Error', details: error.message }), {
             status: 500,
             headers: { 'Content-Type': 'application/json' }
@@ -64,7 +64,7 @@ export async function POST(req) {
 
     } finally {
         if (db) {
-            console.log('🔄 Closing database connection');
+            console.log('Closing database connection');
             // await db.end(); // Properly close the connection
         }
     }

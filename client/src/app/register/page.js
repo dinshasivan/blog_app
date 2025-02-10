@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ const Register = () => {
         password: '',
         confirmPassword: ''
     });
+    const router = useRouter();
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -37,12 +40,13 @@ const Register = () => {
             const data = await response.json();
 
             if (response.ok) {
-                alert('✅ Registration Successful!');
+                alert(' Registration Successful!');
+                router.push('/login')
             } else {
-                alert(`❌ Error: ${data.error}`);
+                alert(` Error: ${data.error}`);
             }
         } catch (error) {
-            alert('❌ Failed to register');
+            alert('Failed to register');
         }
     };
 

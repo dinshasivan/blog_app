@@ -14,29 +14,30 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         try {
             const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             });
-
+    
             const data = await response.json();
-
-            if (response.ok) {
-                alert('✅ Login Successful!');
-                localStorage.setItem('user', JSON.stringify({ username: data.username }));
-                router.push('/')
-                // Redirect to another page or store session
+            console.log("API Response:", data.user.username); // Debugging
+    
+            if (response.ok && data.user && data.user.username) {
+                alert(' Login Successful!');
+                localStorage.setItem('user', JSON.stringify({ username: data.user.username }));
+                router.push('/');
             } else {
-                alert(`❌ Error: ${data.error}`);
+                alert(`Error: ${data.error || "Invalid response from server"}`);
             }
         } catch (error) {
-            alert('❌ Login failed');
+            alert(' Login failed');
+            console.error("Login Error:", error);
         }
     };
-
+    
     return (
         <div className="bg-light">
             <div className="container vh-100 d-flex justify-content-center align-items-center">
