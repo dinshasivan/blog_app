@@ -2,7 +2,7 @@
 # Tasty-Tales
 
 ## Overview
-The **Food Blog Platform** is a web application that allows food enthusiasts to share and explore delicious recipes. The platform provides a seamless experience for users to browse food blogs, view recipe details, leave comments, and engage with posts through likes and saves.
+The **Food Blog Platform** is a web application that allows food enthusiasts to share and explore  recipes. The platform provides a seamless experience for users to browse food blogs, view recipe details, leave comments, and engage with posts through likes and saves.
 
 This project is built using **Next.js** for the frontend, **Node.js & Express** for the backend, and **MySQL** as the database. The application ensures a dynamic and user-friendly interface with **Bootstrap** for styling and **React Bootstrap Icons** for interactive elements.
 
