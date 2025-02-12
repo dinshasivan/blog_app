@@ -77,7 +77,7 @@ const NavBar = () => {
                   </span>
                 </li>
                 <li className="nav-item">
-                  <button className="btn btn-danger text-white px-3" onClick={handleLogout}>
+                  <button className="btn btn-danger fw-bold text-white px-3" onClick={handleLogout}>
                     Logout
                   </button>
                 </li>
@@ -85,10 +85,10 @@ const NavBar = () => {
             ) : (
               <>
                 <li className="nav-item">
-                  <Link href="/register" className="nav-link btn btn-outline-primary mx-1">Register</Link>
+                  <Link href="/register" className="nav-link fw-bold btn btn-outline-primary mx-1">Register</Link>
                 </li>
                 <li className="nav-item">
-                  <Link href="/login" className="nav-link btn btn-primary mx-1">Login</Link>
+                  <Link href="/login" className="nav-link btn fw-bold btn-primary mx-1">Login</Link>
                 </li>
               </>
             )}
